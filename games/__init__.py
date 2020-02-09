@@ -1,5 +1,5 @@
 import json
-from flask_restplus import Namespace, Resource, fields
+from flask_restplus import Namespace, Resource
 from .srcds import Srcds
 from .minecraft import Minecraft
 from os import path
