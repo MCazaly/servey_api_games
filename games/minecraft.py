@@ -1,17 +1,20 @@
 from .game import Game
-from socket import timeout as socket_timeout
-import a2s
+import mcstatus
 
 
-class Srcds(Game):
+class Minecraft(Game):
     def __init__(self, address):
+        super().__init__()
         try:
-            srcds_info = a2s.info(address)
-        except socket_timeout:
+            server = mcstatus.MinecraftServer(address[0], port=address[1])
+            minecraft_info = server.status()
+        except ConnectionError:
             return
         self.info.online = True
-        self.info.server_name = srcds_info.server_name
-        self.info.game_name = srcds_info.game
-        self.info.map_name = srcds_info.map_name
-        self.info.player_count = srcds_info.player_count
-        self.info.max_player_count = srcds_info.max_players
+        self.info.server_name = minecraft_info.description["text"]
+        self.info.game_name = f"Minecraft {minecraft_info.version.name}"
+        self.info.player_count = minecraft_info.players.online
+        self.info.max_player_count = minecraft_info.players.max
+        self.info.minecraft = {
+            "mods": minecraft_info.raw["modinfo"]["modList"]
+        }
