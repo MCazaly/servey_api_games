@@ -17,7 +17,11 @@ class Application(object):
         return self.api.add_namespace(namespace)
 
 
-if __name__ == "__main__":
+def main():
     flask_app = Application()
     flask_app.add_namespace(games.api)
     flask_app.run()
+
+
+if __name__ == "__main__":
+    main()
