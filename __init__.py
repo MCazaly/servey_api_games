@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restplus import Resource, Api
-import games
+from . import games
 
 
 class Application(object):
