@@ -28,7 +28,7 @@ class GameList(Resource):
         return list(games.keys())
 
 
-@api.route("/<string:game_id>")
+@api.route("/game/<string:game_id>")
 class GameInfo(Resource):
     @staticmethod
     @api.doc("Get game info")
