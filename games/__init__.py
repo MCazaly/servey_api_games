@@ -28,6 +28,18 @@ class GameList(Resource):
         return list(games.keys())
 
 
+@api.route("/all")
+class GameInfoAll(Resource):
+    @staticmethod
+    @api.doc("Get info for all games")
+    def get():
+        game_info = {}
+        for game in games.keys():
+            source = sources[game["source"]](game["address"])
+            game_info[game] = source.get_dict()
+        return game_info
+
+
 @api.route("/game/<string:game_id>")
 class GameInfo(Resource):
     @staticmethod
