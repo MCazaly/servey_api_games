@@ -34,7 +34,8 @@ class GameInfoAll(Resource):
     @api.doc("Get info for all games")
     def get():
         game_info = {}
-        for game in games.keys():
+        for game_id in games.keys():
+            game = games[game_id]
             source = sources[game["source"]](game["address"])
             game_info[game] = source.get_dict()
         return game_info
