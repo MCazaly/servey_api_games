@@ -6,7 +6,7 @@ import json
 from .games import Srcds
 from .games import Minecraft
 
-name = "ServeyMcServeface API"
+name = "ServeyMcServeface API (Games)"
 app = Flask(name)
 # TODO app.config["SERVER_NAME"] = "api.serveymcserveface.com:80"
 app.config["TESTING"] = True
