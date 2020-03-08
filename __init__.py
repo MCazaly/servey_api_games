@@ -10,7 +10,7 @@ name = "ServeyMcServeface API (Games)"
 app = Flask(name)
 app.config["APPLICATION_ROOT"] = "/games/"
 
-api = Api(app)
+api = Api(app, doc=False)
 
 api.title = name
 
