@@ -1,5 +1,5 @@
-from flask import Flask, Blueprint
-from flask_restplus import Api, Resource
+from flask import Flask
+from flask_restplus import Api, Resource, Namespace
 from . import games
 from os import path
 import json
@@ -9,9 +9,10 @@ from .games import Minecraft
 name = "ServeyMcServeface API (Games)"
 app = Flask(name)
 # TODO app.config["SERVER_NAME"] = "api.serveymcserveface.com:80"
+app.config["APPLICATION_ROOT"] = "/games/"
 app.config["TESTING"] = True
 
-api = Api(app)
+api = Api(app, doc="/games/")
 api.title = name
 
 directory = path.dirname(path.abspath(__file__))
@@ -27,15 +28,18 @@ sources = {
     "minecraft": Minecraft
 }
 
+gamespace = Namespace("games")
+api.add_namespace(gamespace, "/games")
 
-@api.route("/list")
+
+@gamespace.route("/list")
 class GameList(Resource):
     @staticmethod
     def get():
         return list(games.keys())
 
 
-@api.route("/all")
+@gamespace.route("/all")
 class GameInfoAll(Resource):
     @staticmethod
     @api.doc("Get info for all games")
@@ -48,7 +52,7 @@ class GameInfoAll(Resource):
         return game_info
 
 
-@api.route("/game/<string:game_id>")
+@gamespace.route("/game/<string:game_id>")
 class GameInfo(Resource):
     @staticmethod
     @api.doc("Get game info")
