@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_restplus import Api, Resource, Namespace
+from flask_restplus import Api, Resource
 from . import games
 from os import path
 import json
