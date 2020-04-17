@@ -1,11 +1,4 @@
 /__pycache__
 /games.json
-.idea/.gitignore
-.idea/deployment.xml
-.idea/dictionaries/
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/modules.xml
-.idea/servey_api.iml
-.idea/sonarlint/
-.idea/vcs.xml
+.idea/
+/venv

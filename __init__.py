@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_restplus import Api, Resource, Namespace
+from flask_restplus import Api, Resource
 from . import games
 from os import path
 import json
@@ -10,7 +10,7 @@ name = "ServeyMcServeface API (Games)"
 app = Flask(name)
 app.config["APPLICATION_ROOT"] = "/games/"
 
-api = Api(app, doc=False)
+api = Api(app, doc="/")
 
 api.title = name
 
@@ -43,7 +43,8 @@ class GameInfoAll(Resource):
         game_info = {}
         for game_id in games.keys():
             game = games[game_id]
-            source = sources[game["source"]](game["address"])
+
+            source = sources[game["source"]](game)
             game_info[game_id] = source.get_dict()
         return game_info
 

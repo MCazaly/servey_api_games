@@ -4,10 +4,10 @@ import a2s
 
 
 class Srcds(Game):
-    def __init__(self, address):
-        super().__init__()
+    def __init__(self, game):
+        super().__init__(game)
         try:
-            srcds_info = a2s.info(tuple(address))
+            srcds_info = a2s.info(tuple(self.address))
         except socket_timeout:
             return
         self.info.online = True
