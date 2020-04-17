@@ -3,10 +3,10 @@ import mcstatus
 
 
 class Minecraft(Game):
-    def __init__(self, address):
-        super().__init__()
+    def __init__(self, game):
+        super().__init__(game)
         try:
-            server = mcstatus.MinecraftServer(address[0], port=address[1])
+            server = mcstatus.MinecraftServer(self.address[0], port=self.address[1])
             minecraft_info = server.status()
         except ConnectionError:
             return

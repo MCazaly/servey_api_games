@@ -43,7 +43,8 @@ class GameInfoAll(Resource):
         game_info = {}
         for game_id in games.keys():
             game = games[game_id]
-            source = sources[game["source"]](game["address"])
+
+            source = sources[game["source"]](game)
             game_info[game_id] = source.get_dict()
         return game_info
 
