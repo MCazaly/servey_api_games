@@ -5,6 +5,8 @@ from os import path
 import json
 from .games import Srcds
 from .games import Minecraft
+from .games import LunaMultiplayer
+
 
 name = "ServeyMcServeface API (Games)"
 app = Flask(name)
@@ -24,7 +26,8 @@ with open(games_path, "r") as file:
 
 sources = {
     "srcds": Srcds,
-    "minecraft": Minecraft
+    "minecraft": Minecraft,
+    "ksp_lmp": LunaMultiplayer
 }
 
 
@@ -55,7 +58,7 @@ class GameInfo(Resource):
     @api.doc("Get game info")
     def get(game_id):
         game = games[game_id]
-        source = sources[game["source"]](game["address"])
+        source = sources[game["source"]](game)
         return source.get_dict()
 
 
