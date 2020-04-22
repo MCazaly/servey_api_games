@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for
 from flask_restplus import Api, Resource
 from . import games
 from os import path
@@ -12,7 +12,15 @@ name = "ServeyMcServeface API (Games)"
 app = Flask(name)
 app.config["APPLICATION_ROOT"] = "/games/"
 
-api = Api(app, doc="/")
+class SecureApi(Api):
+    @property
+    def specs_url(self):
+        # HTTPS monkey patch
+        scheme = "http" if ":5000" in self.base_url else "https"
+        return url_for(self.endpoint("specs"), _external=True, _scheme=scheme)
+
+
+api = SecureApi(app, doc="/")
 
 api.title = name
 
