@@ -3,7 +3,7 @@ from flask_restplus import Api, Resource
 from . import games
 from os import path
 import json
-from .games import Srcds
+from .games import A2s
 from .games import Minecraft
 from .games import LunaMultiplayer
 
@@ -33,7 +33,7 @@ with open(games_path, "r") as file:
     games = json.load(file)
 
 sources = {
-    "srcds": Srcds,
+    "a2s": A2s,
     "minecraft": Minecraft,
     "ksp_lmp": LunaMultiplayer
 }
