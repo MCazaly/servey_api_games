@@ -1,0 +1,7 @@
+mcstatus
+python-a2s
+Flask
+flask-restplus
+flask-cors
+werkzeug==0.15.6
+requests
