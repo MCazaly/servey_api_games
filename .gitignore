@@ -2,3 +2,4 @@
 /games.json
 .idea/
 /venv
+*.pyc
