@@ -6,11 +6,14 @@ import json
 from .games import A2s
 from .games import Minecraft
 from .games import LunaMultiplayer
+from .games import Dummy
+from .games import DayZ
 
 
 name = "ServeyMcServeface API (Games)"
 app = Flask(name)
 app.config["APPLICATION_ROOT"] = "/games/"
+
 
 class SecureApi(Api):
     @property
@@ -35,7 +38,9 @@ with open(games_path, "r") as file:
 sources = {
     "a2s": A2s,
     "minecraft": Minecraft,
-    "ksp_lmp": LunaMultiplayer
+    "ksp_lmp": LunaMultiplayer,
+    "dummy": Dummy,
+    "dayz": DayZ
 }
 
 
