@@ -7,7 +7,6 @@ from .games import A2s
 from .games import Minecraft
 from .games import LunaMultiplayer
 from .games import Dummy
-from .games import DayZ
 
 
 name = "ServeyMcServeface API (Games)"
@@ -40,7 +39,6 @@ sources = {
     "minecraft": Minecraft,
     "ksp_lmp": LunaMultiplayer,
     "dummy": Dummy,
-    "dayz": DayZ
 }
 
 
