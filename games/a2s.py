@@ -8,7 +8,7 @@ class A2s(Game):
         super().__init__(game)
         try:
             a2s_info = a2s.info(tuple(self.address))
-        except socket_timeout:
+        except (socket_timeout, a2s.BrokenMessageError):
             return
         self.info.online = True
         self.info.server_name = a2s_info.server_name
