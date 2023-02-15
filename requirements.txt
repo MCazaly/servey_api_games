@@ -3,5 +3,5 @@ python-a2s
 Flask
 flask-restplus
 flask-cors
-werkzeug==0.15.6
+werkzeug==2.2.3
 requests
